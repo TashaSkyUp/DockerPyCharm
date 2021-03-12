@@ -11,7 +11,6 @@ RUN apt update && apt -y install openssh-server whois && apt install sudo
 # Add a non-root user & set password
 RUN useradd -ms /bin/bash $USERNAME
 RUN sudo adduser $USERNAME sudo
-# RUN echo "ALL ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # Save username on a file ¿?¿?¿?¿?¿?
 #RUN echo "$USERNAME" > /.non-root-username
 
@@ -29,7 +28,7 @@ RUN apt purge -y whois && apt -y autoremove && apt -y autoclean && apt -y clean
 COPY entrypoint.sh entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Create the ssh directory and authorized_keys file
+# Create the ssh directory and authorized_keys file 
 USER $USERNAME
 RUN mkdir /home/$USERNAME/.ssh && touch /home/$USERNAME/.ssh/authorized_keys
 USER root
