@@ -18,7 +18,6 @@ class Vote:
         self.thread = thread
     def delete(self):
         self.is_deleted=True
-
 class Thread:
     def __init__(self,title,parent_thread,upvote_count,downvote_count, comments):
         self.title = title
